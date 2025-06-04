@@ -23,7 +23,7 @@ print("\n")
 # AJUSTAR AQUI:
 # Substitua 'NOME_DA_SUA_COLUNA_ALVO' pelo nome exato da coluna no seu CSV que você quer prever.
 # Se a sua coluna alvo for textual (ex: 'Baixo', 'Médio', 'Alto'), precisaremos codificá-la.
-target_column_name = 'NOME_DA_SUA_COLUNA_ALVO' # <--- MUITO IMPORTANTE AJUSTAR AQUI
+target_column_name = 'Mortstat' # <--- MUITO IMPORTANTE AJUSTAR AQUI
 
 if target_column_name not in df.columns:
     print(f"Erro: A coluna alvo '{target_column_name}' não foi encontrada no DataFrame.")
@@ -138,11 +138,11 @@ except Exception as e:
     print(f"Não foi possível gerar as regras da árvore em formato texto: {e}")
 
 # --- Exemplo de como visualizar a árvore (requer matplotlib e graphviz instalados) ---
-# from sklearn.tree import plot_tree
-# import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
 
-# plt.figure(figsize=(20,10))
-# plot_tree(model, feature_names=feature_names, class_names=class_names_str, filled=True, rounded=True, fontsize=10)
-# plt.title("Visualização da Árvore de Decisão")
-# plt.show()
-# print("\nVisualização da árvore gerada (se matplotlib e graphviz estiverem configurados).")
+plt.figure(figsize=(20,10))
+plot_tree(model, feature_names=feature_names, class_names=class_names_str, filled=True, rounded=True, fontsize=10)
+plt.title("Visualização da Árvore de Decisão")
+plt.show()
+print("\nVisualização da árvore gerada (se matplotlib e graphviz estiverem configurados).")
