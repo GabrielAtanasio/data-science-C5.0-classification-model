@@ -30,6 +30,7 @@ O script Python (`app.py` ou o nome que você deu) realiza as seguintes etapas:
 * Python 3.6 ou superior.
 * As seguintes bibliotecas Python:
     * `pandas`
+    * `streamlit`
     * `scikit-learn`
     * `matplotlib` (opcional, para visualização gráfica da árvore, se descomentado no código)
 
@@ -39,7 +40,7 @@ O script Python (`app.py` ou o nome que você deu) realiza as seguintes etapas:
 2.  Certifique-se de ter o Python instalado.
 3.  Instale as bibliotecas necessárias usando pip:
     ```bash
-    pip install pandas scikit-learn matplotlib
+    pip install pandas scikit-learn matplotlib streamlit
     ```
 
 ## 🚀 Como Usar
@@ -62,7 +63,10 @@ O script Python (`app.py` ou o nome que você deu) realiza as seguintes etapas:
     ```bash
     python app.py
     ```
-    (Substitua `app.py` pelo nome real do seu arquivo Python).
+    Caso queira utilizar a a versão com Iterface, basta executar:
+    ```bash
+    streamlit run app_ui.py
+    ```
 
 ## 📄 Arquivo de Entrada
 
