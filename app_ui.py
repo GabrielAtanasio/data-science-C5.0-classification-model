@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 import io
 
 # --- Configuração da Página ---
-st.set_page_config(page_title="Analisador de Árvore de Decisão", layout="wide")
-st.title("Ferramenta Interativa de Análise com Árvore de Decisão 🌳")
+st.set_page_config(page_title="Analisador de árvore de decisão", layout="wide")
+st.title("Ferramenta interativa de análise com árvore de decisão 🌳")
 
 # --- Barra Lateral (Sidebar) ---
 with st.sidebar:
@@ -40,24 +40,24 @@ if df is not None:
 
     with st.sidebar:
         # 2. Seleção de colunas
-        st.subheader("2. Definição de Variáveis")
+        st.subheader("2. Definição de variáveis")
         available_columns = df.columns.tolist()
-        target_column = st.selectbox("Selecione a Coluna Alvo (Y)", options=available_columns)
+        target_column = st.selectbox("Selecione a coluna alvo (Y)", options=available_columns)
         
         # As features são todas as outras colunas por padrão
         default_features = [col for col in available_columns if col != target_column]
-        feature_columns = st.multiselect("Selecione as Colunas de Características (X)", 
+        feature_columns = st.multiselect("Selecione as colunas de características (X)", 
                                          options=available_columns, 
                                          default=default_features)
 
         # 3. Parâmetros do modelo
-        st.subheader("3. Parâmetros do Modelo")
-        max_depth = st.slider("Profundidade Máxima da Árvore", min_value=2, max_value=30, value=5, step=1)
-        min_samples_leaf = st.slider("Mínimo de Amostras por Folha", min_value=1, max_value=100, value=5, step=1)
-        test_size = st.slider("Tamanho do Conjunto de Teste (%)", min_value=10, max_value=50, value=30, step=5) / 100.0
+        st.subheader("3. Parâmetros do modelo")
+        max_depth = st.slider("Profundidade máxima da árvore", min_value=2, max_value=30, value=5, step=1)
+        min_samples_leaf = st.slider("Mínimo de amostras por folha", min_value=1, max_value=100, value=5, step=1)
+        test_size = st.slider("Tamanho do conjunto de teste (%)", min_value=10, max_value=50, value=30, step=5) / 100.0
 
         # Botão para iniciar o treinamento
-        if st.button("Treinar Modelo e Analisar", type="primary"):
+        if st.button("Treinar modelo e analisar", type="primary"):
             # --- Início do Processo de ML (adaptado do seu script) ---
             
             # Validação
@@ -98,15 +98,15 @@ if df is not None:
                         tree_rules = export_text(model, feature_names=feature_names, class_names=[str(cls) for cls in target_classes])
                         
                         # --- Apresentação dos Resultados ---
-                        st.header("📊 Resultados da Análise")
+                        st.header("📊 Resultados da análise")
                         
-                        st.metric(label="Acurácia do Modelo no Conjunto de Teste", value=f"{accuracy:.4f}")
+                        st.metric(label="Acurácia do modelo no conjunto de Teste", value=f"{accuracy:.4f}")
                         
-                        st.subheader("Relatório de Classificação")
+                        st.subheader("Relatório de classificação")
                         st.text(report)
                         
                         # Abas para regras e visualização
-                        tab1, tab2 = st.tabs(["📜 Regras da Árvore (Texto)", "🖼️ Visualização Gráfica"])
+                        tab1, tab2 = st.tabs(["📜 Regras da árvore (Texto)", "🖼️ Visualização Gráfica"])
                         
                         with tab1:
                             st.code(tree_rules, language='bash')
