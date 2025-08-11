@@ -102,6 +102,17 @@ streamlit run app_ui.py
 - 🌳 Visualização gráfica da árvore de decisão
 - 📋 Regras de decisão em formato texto
 
+### 📸 **Screenshots das Interfaces**
+
+**Interface Web Inicial:**
+![Interface Streamlit](screenshots/streamlit-initial-interface.png)
+
+**Interface Configurada:**
+![Interface Configurada](screenshots/streamlit-configured-interface.png)
+
+**Resultados da Análise:**
+![Resultados da Análise](screenshots/streamlit-analysis-results.png)
+
 ## 📊 Dataset e Caso de Uso
 
 ### 🔬 **Dados de Cafeína e Mortalidade**
