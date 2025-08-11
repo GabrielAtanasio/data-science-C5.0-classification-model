@@ -1,6 +1,23 @@
 # Projeto de Mineração de Dados com Árvore de Decisão em Python
 
-Este projeto demonstra um exemplo prático de mineração de dados utilizando um algoritmo de árvore de decisão (similar ao C5.0/C4.5) em Python com a biblioteca `scikit-learn`. O objetivo é carregar dados de um arquivo CSV, treinar um modelo classificador e extrair regras de decisão.
+## 🎯 Para que este projeto serve?
+
+Este projeto serve para **análise de dados médicos e pesquisa em saúde pública**, especificamente focado na **relação entre consumo de cafeína e mortalidade**. É uma ferramenta completa de ciência de dados que oferece:
+
+### ✨ **Principais aplicações:**
+- **🔬 Pesquisa Médica**: Analisa fatores de risco e proteção relacionados à mortalidade
+- **📊 Educação em Data Science**: Demonstra implementação prática de árvores de decisão (similar ao C5.0/C4.5)
+- **🧠 Machine Learning**: Pipeline completo de ML desde o carregamento até avaliação do modelo
+- **💻 Interface Interativa**: Tanto versão linha de comando quanto interface web intuitiva
+
+### 📋 **English Summary:**
+This project serves as a **medical data analysis and public health research tool**, specifically focused on analyzing the **relationship between caffeine consumption and mortality**. It provides both command-line and interactive web interfaces for decision tree classification using scikit-learn, making it valuable for medical research, data science education, and machine learning demonstrations.
+
+---
+
+## 📝 Descrição Técnica
+
+O projeto demonstra um exemplo prático de mineração de dados utilizando um algoritmo de árvore de decisão (similar ao C5.0/C4.5) em Python com a biblioteca `scikit-learn`. O objetivo é carregar dados de um arquivo CSV, treinar um modelo classificador e extrair regras de decisão interpretáveis.
 
 ## 📝 Descrição
 
@@ -37,13 +54,19 @@ O script Python (`app.py` ou o nome que você deu) realiza as seguintes etapas:
 ## 🛠️ Instalação
 
 1.  Clone este repositório ou baixe os arquivos do projeto.
-2.  Certifique-se de ter o Python instalado.
+2.  Certifique-se de ter o Python 3.6+ instalado.
 3.  Instale as bibliotecas necessárias usando pip:
     ```bash
+    # Opção 1: Instalação via requirements.txt (recomendado)
+    pip install -r requirements.txt
+    
+    # Opção 2: Instalação manual
     pip install pandas scikit-learn matplotlib streamlit
     ```
 
 ## 🚀 Como Usar
+
+### 🖥️ **Interface de Linha de Comando (app.py)**
 
 1.  **Prepare seu arquivo de dados**:
     * Certifique-se de que seu arquivo de dados (ex: `all-cause.csv`) está em formato CSV.
@@ -59,27 +82,73 @@ O script Python (`app.py` ou o nome que você deu) realiza as seguintes etapas:
     * (Opcional) Ajuste os parâmetros do `DecisionTreeClassifier` (`max_depth`, `min_samples_leaf`, etc.) conforme necessário para o seu conjunto de dados.
 
 3.  **Execute o Script**:
-    Abra um terminal ou prompt de comando, navegue até o diretório do projeto e execute:
     ```bash
     python app.py
     ```
-    Caso queira utilizar a a versão com Iterface, basta executar:
-    ```bash
-    streamlit run app_ui.py
-    ```
+
+### 🌐 **Interface Web Interativa (app_ui.py)**
+
+Para uma experiência mais intuitiva, utilize a versão com interface gráfica:
+
+```bash
+streamlit run app_ui.py
+```
+
+**Funcionalidades da interface web:**
+- 📁 Upload de arquivos CSV via drag-and-drop
+- 🎯 Seleção interativa da variável alvo
+- ⚙️ Configuração de parâmetros do modelo via sliders
+- 📊 Visualização de resultados em tempo real
+- 🌳 Visualização gráfica da árvore de decisão
+- 📋 Regras de decisão em formato texto
+
+### 📸 **Screenshots das Interfaces**
+
+**Interface Web Inicial:**
+![Interface Streamlit](screenshots/streamlit-initial-interface.png)
+
+**Interface Configurada:**
+![Interface Configurada](screenshots/streamlit-configured-interface.png)
+
+**Resultados da Análise:**
+![Resultados da Análise](screenshots/streamlit-analysis-results.png)
+
+## 📊 Dataset e Caso de Uso
+
+### 🔬 **Dados de Cafeína e Mortalidade**
+O projeto utiliza o dataset `all-cause.csv` que contém dados sobre:
+
+- **👤 Demografia**: Gênero, idade, etnia, estado civil
+- **☕ Consumo de Cafeína**: Níveis de cafeína no sangue
+- **🏥 Saúde**: BMI, pressão arterial, diabetes, doenças cardíacas, câncer, etc.
+- **💊 Estilo de Vida**: Tabagismo, consumo de álcool, renda
+- **🧪 Biomarcadores**: Cotinina, chumbo, cádmio
+- **🍽️ Nutrição**: Fibra, gordura, proteína, carboidratos, colesterol
+- **📈 Desfecho**: Status de mortalidade (Mortstat) - variável alvo principal
+
+### 🎯 **Objetivo da Análise**
+Identificar quais fatores (incluindo consumo de cafeína) estão mais associados com mortalidade, gerando regras de decisão interpretáveis que podem auxiliar em:
+
+- **Pesquisa epidemiológica** sobre fatores de risco
+- **Políticas de saúde pública**
+- **Orientações médicas personalizadas**
+- **Educação em análise de dados médicos**
+
+---
 
 ## 📄 Arquivo de Entrada
 
 O script é projetado para usar um arquivo CSV como entrada. O exemplo principal utiliza `all-cause.csv`.
-Este conjunto de dados (ou uma versão derivada) é baseado em:
+Este conjunto de dados é baseado em:
 Wang, Kun (2023). *Caffeine and mortality dataset*. figshare. Dataset. https://doi.org/10.6084/m9.figshare.22725806.v1
 
-O script é projetado para usar um arquivo CSV como entrada. O exemplo principal utiliza `all-cause.csv` (que você forneceu). O script tentará:
-* Ler este arquivo.
-* Identificar as colunas.
-* Usar uma coluna como alvo (definida por você) e as outras como preditoras.
+O script tentará:
+* Ler este arquivo automaticamente.
+* Identificar as 32 colunas de dados.
+* Usar uma coluna como alvo (ex: `Mortstat` para status de mortalidade).
+* Utilizar as outras como preditoras (características).
 
-**Atenção**: O script inclui verificações básicas para dados faltantes e tipos de dados não numéricos nas colunas preditoras (X). Pode ser necessário um pré-processamento mais elaborado dependendo da natureza dos seus dados (ex: `pd.get_dummies()` para variáveis categóricas em X).
+**Atenção**: O script inclui verificações básicas para dados faltantes e tipos de dados não numéricos nas colunas preditoras (X). A interface web aplica automaticamente transformações como one-hot encoding para variáveis categóricas.
 
 ## 📊 Saída Esperada
 
